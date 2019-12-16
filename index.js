@@ -7,8 +7,26 @@ let buttonColours = ["red", "blue", "green", "yellow"];
 let gamePattern = [];
 let userClickedPattern = [];
 
-// it is the function for to generate random color
+var started = false;
+
+var level = 0;
+
+// started function
 $(document).keypress(function () {
+    if (!started) {
+        $("#level-title").text("Level " + level);
+        nextSequence();
+        started = true;
+    }
+})
+
+// it is the function for to generate random color
+function nextSequence() {
+
+    level++;
+
+    $("#level-title").text("Level " + level); //updating h1 by every level
+
     let randomNumber = Math.floor(Math.random() * 4); // reating random numbers
     let randomChosenColour = buttonColours[randomNumber]; // combine numbers with colors
 
@@ -19,7 +37,8 @@ $(document).keypress(function () {
 
     // playing audio
     playSound(randomChosenColour);
-})
+
+}
 
 // function for clicking to buttons
 $(".btn").click(function () {
@@ -28,10 +47,21 @@ $(".btn").click(function () {
 
     // playing audio
     playSound(userChosenColour);
+    // animating
+    animatePress(userChosenColour);
 })
 
 // audio function
 function playSound(name) {
     let audio = new Audio("sounds/" + name + ".mp3");
     audio.play();
+}
+
+// animation fucntion
+function animatePress(currentColour) {
+    $("#" + currentColour).addClass("pressed");
+    // removing animation
+    setTimeout(function () {
+        $("#" + currentColour).removeClass("pressed");
+    }, 100);
 }
