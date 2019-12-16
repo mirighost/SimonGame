@@ -7,23 +7,22 @@ let buttonColours = ["red", "blue", "green", "yellow"];
 let gamePattern = [];
 let userClickedPattern = [];
 
-var started = false;
+var started = true;
 
-var level = 0;
+var level = 0; // variable of levels
 
 // started function
 $(document).keypress(function () {
-    if (!started) {
-        $("#level-title").text("Level " + level);
+    if (!!started) {
         nextSequence();
-        started = true;
+        started = false;
     }
 })
 
 // it is the function for to generate random color
 function nextSequence() {
 
-    level++;
+    level++; // chanhing 
 
     $("#level-title").text("Level " + level); //updating h1 by every level
 
