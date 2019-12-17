@@ -3,6 +3,11 @@ body {
     background-color: #011F3F;
 }
 
+.game-over {
+    background-color: red;
+    opacity: 0.8;
+}
+
 #level-title {
     font-family: 'Press Start 2P', cursive;
     font-size: 3rem;
@@ -22,11 +27,6 @@ body {
         width: 200px;
         border: 10px solid black;
         border-radius: 20%;
-    }
-
-    .game-over {
-        background-color: red;
-        opacity: 0.8;
     }
 
     .red {
