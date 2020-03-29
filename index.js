@@ -1,6 +1,5 @@
 "use strict";
 
-
 let buttonColours = ["red", "blue", "green", "yellow"];
 
 // this will be array for to add new color by every step
@@ -17,7 +16,7 @@ $(document).keypress(function () {
         $("#level-title").text("Level " + level);
         nextSequence();
         started = true;
-    }
+    };
 });
 
 // function for clicking to buttons
@@ -31,7 +30,7 @@ $(".btn").click(function () {
     animatePress(userChosenColour);
 
     checkAnswer(userClickedPattern.length - 1);
-})
+});
 
 // for to check answer
 function checkAnswer(currentLevel) {
@@ -57,15 +56,15 @@ function checkAnswer(currentLevel) {
         $("#level-title").text("Game Over, Press Any Key to Restart");
 
         startOver();
-    }
-}
+    };
+};
 
 // start game when it is game over
-function startOver(){
+function startOver() {
     level = 0;
     gamePattern = [];
     started = false;
-}
+};
 
 // it is the function for to generate random color, flashing, playing audio (MAIN FUNCTION)
 function nextSequence() {
@@ -84,15 +83,13 @@ function nextSequence() {
 
     // playing audio
     playSound(randomChosenColour);
-}
-
-
+};
 
 // audio function
 function playSound(name) {
     let audio = new Audio("sounds/" + name + ".mp3");
     audio.play();
-}
+};
 
 // animation fucntion
 function animatePress(currentColour) {
@@ -101,4 +98,4 @@ function animatePress(currentColour) {
     setTimeout(function () {
         $("#" + currentColour).removeClass("pressed");
     }, 100);
-}
+};
